@@ -37,14 +37,16 @@ public class TestDB {
 			
 			System.out.println(formeUFO);
 			
+			
+			
 			String sql2 = "SELECT COUNT(*) AS cnt FROM sighting WHERE shape =?";
 			String shapeScelta = "circle";
 			
 			PreparedStatement st2 = conn.prepareStatement(sql2);
-			st2.setString(1, shapeScelta); // 1 perchè è il primo parametro (e anche l'ultimo)
+			st2.setString(1, shapeScelta); // 1 perchè è il primo parametro (e anche l'ultimo) se ne avessi di più indico quale sia
 			ResultSet res2 = st2.executeQuery();
 			res2.first();
-			int count = res2.getInt("cnt");
+			int count = res2.getInt("cnt"); // essendo una sola riga evito di fare tutto il while
 			
 			st2.close();
 			
